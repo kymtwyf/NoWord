@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui" xml:lang="en" lang="en">
+
+	<h:head>
+	    <title>你的空间</title>
+		<meta http-equiv="keywords" content="enter,your,keywords,here" />
+		<meta http-equiv="description" content="A short description of this page." />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+		<!-- 引入外联样式表 -->
+		
+		<link rel="stylesheet" rev="stylesheet" href="pages/space.css" type="text/css" media="all" />	
+		<!-- javascript -->
+		<script type="text/javascript" src="js/ajax.js"></script>
+		<script>
+		
+		function checkForm() {
+			//控制主题输入长度
+			if(document.getElementById("title").value.length>20) {
+				alert("输那么多字好看么！主题不要超过20个字！！");
+				return false;
+			}
+			//控制留言信息长度
+			if(document.getElementById("leaveWord").value.length>400) {
+				alert("你想把我的数据库挤爆啊？说这么多！");
+				return false;
+			}
+		}
+		</script>
+		<script>
+		    //测试浏览器版本
+		    var Sys = {};
+		    var ua = navigator.userAgent.toLowerCase();
+		    var s;
+		    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+		    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+		    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+		    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+		    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+		</script>
+		<script>
+	            if (Sys.ie == 6.0) window.location.href="/bye_ie6.jsp?ver=6";
+	            if (Sys.ie == 7.0) window.location.href="/bye_ie6.jsp?ver=7";
+	    </script>
+	    <script>
+			//发布在tomcat中可以有多个网站(也称web应用),可通过request.getContextPath()获得当前网站名称
+			String path = request.getContextPath();
+			//request的一些方法,如getScheme()获取当前协议,getServerName()获取服务器地址,getServerPort()获取端口
+			String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+			
+			User user = null;
+			if(session.getAttribute("loginUser") != null) {
+				user = (User) session.getAttribute("loginUser");
+			}
+		</script>
+	</h:head>
+  
+  <h:body>
+    <div class="mainContainer" id="mainContainer">
+    	<div class="containerShadow">
+    		<div class="head">
+    		</div>
+    		<div style="position: absolute;top:160px;left:160px">	
+    			<p:commandButton value="回到首页" style="font-family:'微软雅黑'" action="#{userBean.toHomePage}"/>
+    		</div>
+    		<div style="position: absolute;top:160px;right:160px">	
+    		
+				<p:commandButton value="设置" style="font-family:'微软雅黑'" action="#{userBean.toMySpace}"/>
+	     		<p:commandButton value="背单词" style="font-family:'微软雅黑'" action="#{userBean.toMyWord}"/>
+	     		<p:commandButton value="登出" style="font-family:'微软雅黑'" action="#{userBean.loginOut}"/>
+	     	</div>
+    		<div class="yourspace">
+    			<div class="yourspaceShadow">
+					<p><span style="color:#FF8C00;font-size:20px;font-weight: bold">我的单词书</span><a href="/NoWordProject/changebook.xhtml" style="color:#B22222; text-decoration:none; font-size:16px;"> (更多) </a></p>
+					<a href="#"><img alt="" src="pages/images/wordbookcover/cet6.jpg" height="146" width="98"/></a>
+				</div>
+    		</div>
+    	
+    		<div class="chartContainer" >
+    			<div class="chartShadow">
+		    		<div id="progress-container">
+		    			<h3 style="color:#FF8C00;font-size:20px;font-weight: bold">进步曲线</h3>
+				            <h:form>
+								<p:lineChart id="linear" value="#{progressChart.linearModel}" legendPosition="e"  
+						    		title="卧槽这个参数更新起来会不会死人啊(PS我是表格标题)" minY="0" maxY="600" style="height:300px;"/>  
+							</h:form>
+
+			        <div id="total-stats">
+			            <span>单词/句子: <span class="highlight">5855</span>,&nbsp; &nbsp;</span>
+			            <span>已经掌握: <span class="highlight">5059</span>,&nbsp; &nbsp; </span> 
+			            <span>正在熟悉: <span class="highlight">655</span>,&nbsp; &nbsp; </span> 
+			            <span>开始入门: <span class="highlight">104</span> </span>
+			        </div>
+			        
+			        <h3 style="color:#FF8C00;font-size:20px;font-weight: bold">每日复习盘点</h3>
+			        	<h:form>
+							<p:barChart id="stacked" value="#{reviewChart.categoryModel}" legendPosition="ne" style="height:300px"  
+            					title="我比上面那个好改但是改起来会不会残就不知道了（PS我也是表格标题）" stacked="true" barMargin="50" min="0" max="300"/>
+						</h:form>
+					<p:separator id="separator"/>  
+					<p><span style="color:#FF8C00;font-size:20px;font-weight: bold">要留言吗</span></p>
+			        <div class="messagebody">
+						<table align="center" width="675" border="0" cellpadding="0"
+							cellspacing="0">
+							
+							<tr>
+								<td width="675">
+								<!-- form表单,onSubmit提交时调用javascript,action指定处理页面,
+								method是参数传递方式(get为直接显示在浏览器地址栏,即url;post为封装式发送)
+								 -->
+									<form name="messageForm" id="messageForm" method="post" onsubmit="checkForm()"
+										action="page/jsp/save.jsp">
+										<div align="center">
+											<table border="0" cellpadding="0" cellspacing="0">
+												<tbody>
+													<tr>
+														<td colspan="3">
+															<img src="pages/images/img/frame_tct.gif" width="500" height="140"
+																border="0" usemap="#Map"/></td>
+													</tr>
+													<tr>
+														<td width="12" background="pages/images/img/frame_tcl.gif"></td>
+														<td bgcolor="#ffffff" width="476" align="center">
+															<table width="421" border="0" cellpadding="0" cellspacing="0">
+																<tbody>
+																	<tr>
+																		<td align="center" width="164" valign="middle" height="30">
+																			<div align="right">
+																				<img src="pages/images/img/Fi_fu1.gif" width="12" height="12"
+																					border="0"/>
+																			</div></td>
+																		<td width="40" valign="middle">
+																			
+																		</td>
+																		<td align="center" width="21" valign="middle">
+																			<img src="pages/images/img/Fi_fu1.gif" width="12" height="12"
+																				border="0"/></td>
+																		<td width="40" valign="middle">
+																			<script>if(user != null){
+																				out.print(user.getUsername() + ",您好!");
+																			}
+																			</script></td>
+																		<td align="center" width="16" valign="middle">
+																			<img src="pages/images/img/Fi_fu2.gif" width="12" height="12"
+																				border="0"/></td>
+																		<td width="41" valign="middle">
+																			<script>
+																			//因为登录成功时已经往session中添加userType属性,如果取出来为空的话,则未登录
+																			//如果已经登录,显示登出链接;如果还未登录,则显示登录链接
+																				if(user != null){
+																			 </script>
+																			
+																			<script>}else{ </script>
+																			
+																			<script>}</script>
+																			
+																		</td>
+																		<td align="center" width="15" valign="middle">
+																			<img src="pages/images/img/Fi_fu1.gif" width="12" height="12"
+																				border="0"/></td>
+																	</tr>
+																</tbody>
+															</table>
+															<table border="0" cellpadding="0" cellspacing="0">
+																<tbody>
+																	<tr>
+																		<td valign="middle">
+																			<table width="288" border="0" cellpadding="0"
+																				cellspacing="0">
+																				<tbody>
+																					<tr>
+	
+																						<td style="color: #999900;">
+																							主题:
+																						</td>
+																						<td width="6"></td>
+																						<td>
+																							<input name="title" type="text" class="inp_set1" style="backgroundColor:#77fdf7"
+																								id="title"
+																								onFocus="this.style.backgroundColor='#77fdf7'"
+																								onBlur="this.style.backgroundColor='#FFFFFF'"
+																								value="路过" size="30" />
+																						</td>
+																					</tr>
+				
+																				</tbody>
+																			</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td colspan="3" align="center" height="30" valign="middle">
+																			<table border="0" cellpadding="0" cellspacing="0">
+																				<tbody>
+																					<tr>
+																					
+																						<td>
+																							&nbsp;
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+															<textarea name="leaveWord" cols="55" rows="8" wrap="soft"
+																class="inp_set1" id="leaveWord"
+																onFocus="this.style.backgroundColor='#77fdf7'"
+																onBlur="this.style.backgroundColor='#FFFFFF'"></textarea>
+															<table cellpadding="0" cellspacing="0">
+																<tbody>
+																	<tr>
+																		<td valign="middle">
+																		<!-- 提交按钮,type为submit -->
+																			<input type="submit" value="我写好咯" class="inp_set1"
+																				onFocus="this.style.backgroundColor='#77fdf7'"
+																				onBlur="this.style.backgroundColor='#FFFFFF'"
+																				name="Submit"/>
+																		</td>
+																		<td width="5"></td>
+																		<td valign="middle">
+																		<!-- 重写按钮,type为reset -->
+																			<input type="reset" value="重写一回" class="inp_set1"
+																				onFocus="this.style.backgroundColor='#77fdf7'"
+																				onBlur="this.style.backgroundColor='#FFFFFF'"
+																				name="reset"/>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+															<table border="0" cellpadding="0" cellspacing="0">
+																<tbody>
+																	<tr>
+																		<td valign="bottom" align="left">
+																			<img src="pages/images/img/Fi_har.gif" width="28" height="20"
+																				border="0" align="middle"/>
+																			<img src="pages/images/img/Fi_jo.gif" width="37" height="26"
+																				border="0" align="middle" hspace="3"/>
+																		</td>
+																		<td width="300" height="29" align="center" valign="bottom">
+																			<table border="0" cellpadding="0" cellspacing="0"
+																				width="197">
+				
+																			</table>
+																		</td>
+																		<td valign="bottom" align="right">
+																			<img src="pages/images/img/Fi_hasa.gif" width="24" height="23"
+																				border="0" hspace="4" align="bottom"/>
+																			<img src="pages/images/img/Fi_sc.gif" width="24" height="22"
+																				border="0" vspace="3" align="top"/>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+														<td width="12" background="pages/images/img/frame_tcr.gif"></td>
+													</tr>
+													<tr>
+														<td valign="top" colspan="3">
+															<img src="pages/images/img/frame_tcb.gif" width="500" height="12"
+																border="0"/>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</form>
+				
+								</td>
+							</tr>
+
+						</table>
+					</div>
+			        
+					
+					</div>
+			    </div>
+			    
+			</div>
+    	</div>
+    </div>
+  </h:body>
+</html>

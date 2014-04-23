@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui" xml:lang="en" lang="en">
+
+  <h:head>
+  	<meta http-equiv="keywords" content="enter,your,keywords,here" />
+	<meta http-equiv="description" content="A short description of this page." />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	
+	<link rel="stylesheet" rev="stylesheet" href="pages/comment.css" type="text/css" media="all" />
+	<script type="text/javascript" src="pages/images/window.js"></script>
+	<script type="text/javascript" src="pages/images/recite.js"></script>
+	<h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/> 
+	<script>
+	    //测试浏览器版本
+	    var Sys = {};
+	    var ua = navigator.userAgent.toLowerCase();
+	    var s;
+	    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+	    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+	    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+	    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+	    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+	</script>
+	<script>
+            if (Sys.ie == 6.0) window.location.href="/bye_ie6.jsp?ver=6";
+            if (Sys.ie == 7.0) window.location.href="/bye_ie6.jsp?ver=7";
+    </script>
+
+  </h:head>
+ 
+  <h:body>
+
+  	<div class="mainContainer" id="mainContainer">
+  		<div class="containerShadow">
+	    	<div class="head">
+    		</div>
+    		<strong>
+	    	<div  id = "hitcard">
+	      	最新打卡
+	      	</div>
+	      	<div class ="fadebutton" id = "myspace">
+	      	我的空间
+	      	</div>
+	      	
+	      	</strong>
+
+	      	<div class="yourspace">
+    			<div class="yourspaceShadow">
+				<div class="nav-box">
+			        <h3>打卡导航</h3>
+			        <ul>
+			            
+			                <li><a href="/checkin/user/389116/">我的打卡</a></li>
+			                <li class="subitem">
+			                    <a href="/checkin/user/favor_mine/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;被喜欢打卡</a>
+			                </li>
+			                <li class="subitem">
+			                    <a href="/checkin/user/comment_mine/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;被评论打卡</a>
+			                </li>
+			            
+			            <li><a href="/checkin/top/">榜样打卡</a></li>
+			            <li><a href="/checkin/latest/">最新打卡</a></li>
+			            <li><a href="/checkin/favorite/">最受欢迎打卡</a></li>
+			        </ul>
+			    </div>
+				<br/>
+				<br/>
+				
+				</div>
+    		</div>
+	      	<div class="chartContainer" >
+    			<div class="chartShadow">
+		    		<div id="checkin">
+			        	<ul>
+			            
+			            <li class="checkin">
+						    <div class="avatar">
+						       <a target="_blank" href="/bdc/review/progress/517974"><img src="http://www.shanbay.com/avatarimg/4fa69eebbe74bd322b000004" style = "width:60px;height:60px;"/></a>
+						    </div>
+						    <div class="content">
+						        <div class="info">
+						            <span class="username">
+						                <a name="517974" href="/checkin/user/517974/">lastwolf</a>
+						            </span>
+						            <span>
+						                
+						                    第<span class="number"> 78 </span> 天打卡日记 
+						                
+						            </span>
+						        </div>
+						        <div class="note">
+						            
+						                学习了 50 个单词
+						            
+						            
+						                , 牙痛，上痛至脑部，下痛至喉咙，悲剧  ///  Life is not measured by the number of breaths we take, but by the moments that take our breath away.
+						            
+						        </div>
+						    </div>
+						    <br/>
+						    <div class="operation">
+						        <a href="/checkin/record/3755044/" class="target">六月 12, 2012</a>
+						        <div class="favorite-comment-operation">
+						
+						            <span>
+						                <a class="favorite-link" href="/checkin/checkin/favor/3755044/">喜欢</a>
+						                (<span class="favorite_num">0</span>)
+						            </span>
+						
+						            <span>
+						                <a class="comment-link" href="/checkin/record/3755044/" checkin_id="3755044">评论</a>
+						                (<span class="comment_num">0</span>)
+						            </span>
+						        </div>
+						        <div class="favorited_message hide">已喜欢</div>
+						        <div class="voted_message hide">你曾喜欢过</div>
+						        <div class="comments-container">
+						            <div class="uparrow"></div>
+						            
+						
+						
+						<div class="checkin_comments">
+						    <div class="comment_form_container">
+						        
+						            <span class="load hide">请等待...</span>
+						            <form class="comment_form" action="/checkin/checkin/comment/3755044/" >
+						                
+						                
+						                    <input type="hidden" name="user" value="389116" id="id_user"></input>
+						                
+						                    <input type="hidden" name="checkin" value="3755044" id="id_checkin"></input>
+						                
+						                    <textarea id="id_comment" rows="2" cols="60" name="comment"></textarea>
+						                
+						                <button type="submit" class="g-button">评论</button>
+						                <div class="clear"></div>
+						            </form>
+						        
+						    </div>
+						    <div class="comments">
+						        
+						        <div class="template_comment comment hide">
+						            <span>
+						                <a href="/user/list/yotawolf/"><img src="/avatarimg/4fa69f36e47d6b08af000004" alt="yotawolf" width="35" height="35"/>&nbsp; yotawolf</a>
+						            </span>:&nbsp; &nbsp; 
+						            <span class="comment_content"></span> &nbsp;<span class="comment_date"></span>
+						        </div>
+						        
+						        <div class="comments-list">
+						        </div>
+						    </div>
+						</div>
+						
+						
+						        </div>
+						
+						        <span class="share-link">分享</span>
+						        <div class="shares hide">
+						                <div class="uparrow"></div>
+						                &nbsp;&nbsp;
+						                <span class="sina share" service="tsina">&nbsp;</span>
+						                <span class="douban share" service="douban">&nbsp;</span>
+						                <span class="renren share" service="renren">&nbsp;</span>
+						                <span class="qq share" service="tqq">&nbsp;</span>
+						                <span class="qq_space share" service="qzone">&nbsp;</span>
+						
+						        </div>
+						
+						    </div>
+			
+						    
+						</li>    
+						<li class="checkin">
+						    <div class="avatar">
+						       <a href="/bdc/review/progress/497902"><img src="pages/images/Pumpkin.png" alt ="" style = "width:60px;height:60px;"/></a>
+						    </div>
+						    <div class="content">
+						        <div class="info">
+						            <span class="username">
+						                <a name="497902" href="/checkin/user/497902/">xuchengcheng2012</a>
+						            </span>
+						            <span>
+						                
+						                    第<span class="number"> 84 </span> 天打卡日记 
+						                
+						            </span>
+						        </div>
+						        
+						        <div class="note">
+						            
+						                学习了 100 个单词
+						            
+						            
+						                , decompose分解 abide容忍 昨晚用微信聊天，遇到一个直率的女生，被问的难以招架。接近凌晨1点，有种发烧的感觉。毕淑敏的《花冠病毒》，没有原想的好看，失望了
+						            
+						        </div>
+						    </div>
+						    <br/>
+						    <div class="operation">
+						        <a href="/checkin/record/3755068/" class="target">六月 12, 2012</a>
+						        <div class="favorite-comment-operation">
+						
+						            <span>
+						                <a class="favorite-link" href="/checkin/checkin/favor/3755068/">喜欢</a>
+						                (<span class="favorite_num">2</span>)
+						            </span>
+						
+						            <span>
+						                <a class="comment-link" href="/checkin/record/3755068/" checkin_id="3755068">评论</a>
+						                (<span class="comment_num">0</span>)
+						            </span>
+						        </div>
+						        <div class="favorited_message hide">已喜欢</div>
+						        <div class="voted_message hide">你曾喜欢过</div>
+						        <div class="comments-container">
+						            <div class="uparrow"></div>
+						            
+						
+						
+						<div class="checkin_comments">
+						    <div class="comment_form_container">
+						        
+						            <span class="load hide">请等待...</span>
+						            <form class="comment_form" action="/checkin/checkin/comment/3755068/">
+						                
+						                
+						                    <input type="hidden" name="user" value="389116" id="id_user"></input>
+						                
+						                    <input type="hidden" name="checkin" value="3755068" id="id_checkin"></input>
+						                
+						                    <textarea id="id_comment" rows="2" cols="60" name="comment"></textarea>
+						                
+						                <button type="submit" class="g-button">评论</button>
+						                <div class="clear"></div>
+						            </form>
+						        
+						    </div>
+						    <div class="comments">
+						        
+						        <div class="template_comment comment hide">
+						            <span>
+						                <a href="/user/list/yotawolf/"><img src="/avatarimg/4fa69f36e47d6b08af000004" alt="yotawolf" width="35" height="35"/>&nbsp; yotawolf</a>
+						            </span>:&nbsp; &nbsp; 
+						            <span class="comment_content"></span> &nbsp;<span class="comment_date"></span>
+						        </div>
+						        
+						        <div class="comments-list">
+						        </div>
+						    </div>
+						</div>
+						
+						
+						        </div>
+						
+						        <span class="share-link">分享</span>
+						        <div class="shares hide">
+						                <div class="uparrow"></div>
+						                &nbsp;&nbsp;
+						                <span class="sina share" service="tsina">&nbsp;</span>
+						                <span class="douban share" service="douban">&nbsp;</span>
+						                <span class="renren share" service="renren">&nbsp;</span>
+						                <span class="qq share" service="tqq">&nbsp;</span>
+						                <span class="qq_space share" service="qzone">&nbsp;</span>
+						
+						        </div>
+						
+						    </div>
+						</li>
+			 
+			       		</ul>
+			        <div class="pages">
+			            
+			                
+			                    <span class="page">
+			                        <a href="?page=1">1</a>
+			                    </span>
+			                
+			                    <span class="page">
+			                        <a href="?page=2">2</a>
+			                    </span>
+			                
+			                    <span class="page">
+			                        <a href="?page=3">3</a>
+			                    </span>
+			                
+			                    <span class="page">
+			                        <a href="?page=4">4</a>
+			                    </span>
+			                
+			                    <span class="page">
+			                        <a href="?page=5">5</a>
+			                    </span>
+			                
+			                    <span class="page">
+			                        <a href="?page=6">6</a>
+			                    </span>
+			                
+			                    <span class="page">
+			                        <a href="?page=7">7</a>
+			                    </span>
+			                
+			                    <span class="page">
+			                        <a href="?page=8">8</a>
+			                    </span>
+			                
+			            
+			        </div>
+			    </div>
+			    </div>
+			</div>
+    	</div>
+    </div> 
+ 	
+  </h:body>
+</html>

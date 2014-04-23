@@ -1,0 +1,257 @@
+@CHARSET "UTF-8";
+.mainContainer {
+	background-color:#FFFFFF;
+	margin: 0px;
+	background-image: url('images/bg.gif');
+	background-repeat: repeat;
+}
+
+.containerShadow {
+	height: 1200px;
+	width: 990px;
+	margin-left:auto; 
+	margin-right:auto;
+	background-color:#FFFFFF;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);
+	-moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+	-webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+	box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+.head {
+	height: 150px;
+	background-image: url('images/banner.jpg');
+	background-attachment:inherit;
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fadebutton {
+	position: relative;
+	background-color: #3CC;
+	color:#FFF;
+	height: 35px;
+	padding: 1px 2px 1px 2px;
+	border-radius: 5px;
+	line-height:40px;
+	font-family:'SimHei';
+	font-size:18px;
+	letter-spacing:5px;
+	-moz-user-select: none;  
+	-khtml-user-select: none;              		    
+	user-select: none;  
+	cursor:default;
+	text-align:center;
+}
+.yourspace {
+	background-color:#FFFFFF;
+	margin: 0px;
+	background-image: url('images/bg.gif');
+	background-repeat: repeat;
+}
+.yourspaceShadow{
+	font-family: 'SimHei';
+	float: right;
+	height: 300px;
+	width: 220px;
+	margin-left:auto; 
+	margin-right:10px;
+	background-color:#FFFFFF;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);
+	-moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+	-webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+	box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+
+.chartContainer {
+	background-color:#FFFFFF;
+	margin: 0px;
+	background-image: url('images/bg.gif');
+	background-repeat: repeat;
+}
+.chartShadow{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	float: left;
+	height: 980px;
+	width: 700px;
+	margin-left:10px; 
+	margin-right:auto;
+	background-color:#FFFFFF;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);
+	-moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+	-webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+	box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+#hitcard{
+	margin-bottom : -25px;
+	margin-left:10px; 
+	color:#FFA918;
+	font-size:22px;
+	font-family:'SimHei';
+	
+	text-shadow: none;
+	width: 100px;
+	margin: 10 5px 0 2px;
+	color: white;
+	padding: 1px 2px 1px 7px;
+	border-radius: 5px;
+	background: #3CC;
+}
+#myspace{
+	width: 105px;
+	left: 870px;
+	top: -42px;
+	height: 30px;
+	padding: 0px 2px 4px 6px;
+}
+#checkin li.checkin .avatar {
+	float: left;
+	width: 80px;
+	padding-top: 5px;
+}
+#checkin {
+	position: relative;
+	padding-bottom: 30px;
+}
+#checkin li.checkin {
+	position: relative;
+	clear: both;
+	padding: 10px 0 30px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #DDD;
+}
+li {
+	display: list-item;
+	text-align: -webkit-match-parent;
+}
+#checkin ul {
+list-style: none;
+}
+#checkin .pages {
+	position: absolute;
+	right: 10px;
+	font-weight: bold;
+}
+#checkin li.checkin .content .info {
+	font-weight: bold;
+	font-size: 15px;
+	padding-bottom: 5px;
+	line-height: 20px;
+}
+#checkin li.checkin .operation .favorite-comment-operation {
+	position: absolute;
+	top: 0;
+	right: 150px;
+}
+.content .note {
+	background:  #FFFFE0;
+	padding: 10px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 20px;
+	color: #555;
+}
+#checkin li.checkin .content {
+	margin-left: 80px;
+	width: 500px;
+}
+#checkin li.checkin .content .number {
+	color: #3CC;
+}
+#checkin li.checkin .operation {
+	clear: both;
+	width: 600px;
+	margin-left: 80px;
+	font-size: 13px;
+	position: relative;
+}
+#checkin li.checkin .operation .comments-container {
+	margin-top: 5px;
+	display: none;
+}
+#checkin li.checkin .operation .comments-container .uparrow {
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	right: 175px;
+	top: 18px;
+	border-left: 12px solid transparent;
+	border-right: 2px solid transparent;
+	border-bottom: 10px solid #E6F2FA;
+}
+#checkin li.checkin .operation .comments-container .checkin_comments {
+	background-color: #E6F2FA;
+	width: 503px;
+}
+#checkin li.checkin .operation .share-link {
+	font-family: '微软雅黑';
+	position: absolute;
+	top: 0;
+	right: 110px;
+	color:#3CC;
+
+}
+.hide {
+	display: none;
+}
+body a {
+	color: #FF7F00;
+	text-decoration: none;
+	font-family: '微软雅黑';
+}
+
+.nav-box {
+	background: #FFFFFF;
+	padding: 5px;
+	margin: 7px 0;
+	
+}
+.nav-box h3 {
+	color: #FFA918;
+	margin: 5px 0;
+	text-shadow: none;
+	
+	width: 100px;
+	margin: 0 5px 0 2px;
+	color: white;
+	font-size: 22px;
+	padding: 1px 2px 1px 7px;
+	border-radius: 5px;
+	background: #3CC;
+}
+h3 {
+	display: block;
+	font-size: 1.17em;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: bold;
+}
+.nav-box ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+ul, menu, dir {
+	display: block;
+	list-style-type: disc;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 40px;
+}
+.nav-box .subitem {
+	font-size: 12px;
+}
+.nav-box ul li {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 10px;
+	border-bottom: 1px solid #CCC;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 20px;
+}

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui" xml:lang="en" lang="en">
+
+  <h:head>
+  	<meta http-equiv="keywords" content="enter,your,keywords,here" />
+	<meta http-equiv="description" content="A short description of this page." />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	
+	<link rel="stylesheet" rev="stylesheet" href="pages/userinfo.css" type="text/css" media="all" />
+	<script type="text/javascript" src="pages/images/window.js"></script>
+	<script type="text/javascript" src="pages/images/recite.js"></script>
+	<h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/> 
+	<script>
+	    //测试浏览器版本
+	    var Sys = {};
+	    var ua = navigator.userAgent.toLowerCase();
+	    var s;
+	    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+	    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+	    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+	    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+	    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+	</script>
+	<script>
+            if (Sys.ie == 6.0) window.location.href="/bye_ie6.jsp?ver=6";
+            if (Sys.ie == 7.0) window.location.href="/bye_ie6.jsp?ver=7";
+    </script>
+
+  </h:head>
+ 
+  <h:body>
+
+  	<div class="mainContainer" id="mainContainer">
+  		<div class="containerShadow">
+	    	<div class="head">
+    		</div>
+    		<strong>
+	    	<div  id = "yourconfig">
+	      	个性化设置
+	      	</div>
+	      	<div style="position: absolute;top:160px;left:700px">	
+    			<p:commandButton value="回到首页" style="font-family:'微软雅黑'" action="#{userBean.toHomePage}"/>
+    		</div>
+    		<div style="position: absolute;top:160px;right:160px">	
+    		
+				<p:commandButton value="我的空间" style="font-family:'微软雅黑'" action="#{userBean.toPerson}"/>
+	     		<p:commandButton value="背单词" style="font-family:'微软雅黑'" action="#{userBean.toMyWord}"/>
+	     		<p:commandButton value="登出" style="font-family:'微软雅黑'" action="#{userBean.loginOut}"/>
+	     	</div>
+	      	
+	      	</strong>
+
+	      	<div class="yourspace">
+    			<div class="yourspaceShadow">
+					<div id="setting-nav" class="nav-box">
+					    <h3>设置</h3>
+					    <ul>
+					        <li class="bdc"><a href="wordSet.xhtml?username=#{userBean.username}">背单词设置</a></li>
+					        <li class="planning"><a href="studyPlan.xhtml?username=#{userBean.username}">学习计划</a></li>
+					        <li class="info"><a href="userinfo.xhtml?username=#{userBean.username}">用户设置</a></li>
+					        <li class="avatar"><a href="changeHead.xhtml?username=#{userBean.username}">更改头像</a></li>
+					        <li class="account"><a href="changeCode.xhtml?username=#{userBean.username}">账号设置</a></li>
+					
+					    </ul>
+					</div>
+				
+				</div>
+    		</div>
+	      	<div class="chartContainer" >
+    			<div class="chartShadow">
+    			<div id="right-content">
+		    		<div id="setting-info" class="setting">
+						<p:panel header="制定学习计划">  
+						<h:form id="myform">
+							<h:panelGrid columns="3" style="height:260px">
+								<tr>
+									<th><label for="id_nickname">单词总数：</label> </th>
+									<td>
+									<h:inputText value="4771" 
+    		 							id = "wordNumber" 
+    		 							readonly="true"
+   										style="border-style:none;color:blue;background-color:transparent;">
+    								</h:inputText>  
+									</td>
+								</tr>
+								<tr></tr>
+									<th>学习模式：</th>
+											<h:selectOneRadio value="#{userBean.studymodel}" style="top:175px;left:105px;position:absolute">
+												<f:selectItem itemValue="1" itemLabel="快速浏览"/>
+												<f:selectItem itemValue="2" itemLabel="中速探索"/>
+												<f:selectItem itemValue="3" itemLabel="稳步上升"/>
+											</h:selectOneRadio>																
+								<tr>							
+									<th>日学习量:</th>
+									<h:selectOneMenu value="#{userBean.wordamount}" style="top:265px;left:110px;position:absolute">
+										<f:selectItem itemValue="5" itemLabel="5"/>
+										<f:selectItem itemValue="10" itemLabel="10"/>
+									</h:selectOneMenu>
+								</tr>
+											
+									
+									
+								<tr>
+									<td>&nbsp;</td>
+									<td class="btn">
+										<p:commandButton  value="确定" action="#{userBean.studyModel}"/>
+				                        <a class="cancel" href="welcomePage.xhtml?username=#{userBean.username}">取消</a>
+									</td>
+								</tr>
+							</h:panelGrid>
+						</h:form>
+					  </p:panel>
+					</div>
+					</div>
+			    </div>
+			</div>
+    	</div>
+    </div> 
+ 	
+  </h:body>
+</html>

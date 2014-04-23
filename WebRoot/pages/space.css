@@ -1,0 +1,221 @@
+@CHARSET "UTF-8";
+
+.mainContainer {
+	background-color:#FFFFFF;
+	margin: 0px;
+	background-image: url('images/bg.gif');
+	background-repeat: repeat;
+}
+
+.containerShadow {
+	height: 1580px;
+	width: 990px;
+	text-align:center;
+	margin-left:auto; 
+	margin-right:auto;
+	background-color:#FFFFFF;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);
+	-moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+	-webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+	box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+.containerShadowForMessage{
+	height: 2050px;
+	width: 990px;
+	text-align:center;
+	margin-left:auto; 
+	margin-right:auto;
+	background-color:#FFFFFF;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);
+	-moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+	-webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+	box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+.head {
+	height: 150px;
+	background-image: url('images/banner.jpg');
+	background-attachment:inherit;
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.fadebutton {
+	position: relative;
+	background-color: #3CC;
+	color:#FFF;
+	height: 35px;
+	padding: 1px 2px 1px 2px;
+	border-radius: 5px;
+	line-height:40px;
+	font-family:'SimHei';
+	font-size:18px;
+	letter-spacing:5px;
+	-moz-user-select: none;  
+	-khtml-user-select: none;              		    
+	user-select: none;  
+	cursor:default;
+	text-align:center;
+}
+.messagetable{
+	margin-top:-20px;
+}
+#myspace{
+	width: 105px;
+	left: 870px;
+	top: -42px;
+	height: 30px;
+	padding: 0px 2px 4px 6px;
+}
+#myspace a:hover {
+	background-color: none;
+	text-decoration: none;
+	border-bottom-style: none;
+	border-bottom-color: none;
+	border-bottom-width: none;
+}
+#total-stats{
+	text-align: center;
+	background: none repeat scroll 0 0 #EEE;
+	border: 1px solid #CCC;
+	width: 500px;
+	margin: 0 auto;
+	padding: 5px 10px;
+	font-family: 'SimHei';
+}
+
+.highlight {
+	color: #FF8C00;
+}
+
+.yourspace {
+	background-color:#FFFFFF;
+	margin: 0px;
+	background-image: url('images/bg.gif');
+	background-repeat: repeat;
+}
+.yourspaceShadow{
+	font-family: 'SimHei';
+	float: right;
+	height: 300px;
+	width: 220px;
+	position:absolute;
+	top: 230px;
+	right:157px;
+	text-align:center;
+	margin-left:auto; 
+	margin-right:10px;
+	background-color:#FFFFFF;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);
+	-moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+	-webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+	box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+
+.chartContainer {
+	background-color:#FFFFFF;
+	margin: 0px;
+	background-image: url('images/bg.gif');
+	background-repeat: repeat;
+}
+.chartShadow{
+	font-family: 'SimHei';
+	float: left;
+	position:absolute;
+	top:230px;
+	left:157px;
+	height: 1330px;
+	width: 700px;
+	text-align:center;
+	margin-left:10px; 
+	margin-right:auto;
+	background-color:#FFFFFF;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);
+	-moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+	-webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+	box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+tr,td,th {
+	font-size: 10pt
+}
+
+textarea {
+	border: 1px #78c088 dotted;
+	FONT-SIZE: 8pt;
+	COLOR: #000000;
+	FONT-FAMILY: "Arial"
+}
+
+span {
+	font-size: 16pt
+}
+
+big {
+	font-size: 11pt
+}
+
+small {
+	font-size: 9pt
+}
+
+BR {
+	font-size: 9pt
+}
+
+.inp_set1 {
+	font-size: 10pt;
+	color: #999900;
+	background-color: #FFFFFF;
+	border-style: dotted;
+	border-color: #cacfa5;
+}
+
+.inp_set2 {
+	font-family: Verdana;
+	font-size: 7pt;
+	color: #9ba556;
+	background-color: #FFFFFF;
+	border-style: dotted;
+	border-color: #cacfa5;
+}
+
+.inp_set3 {
+	font-size: 8pt;
+	color: #999900;
+	background-color: #FFFFFF;
+	border-style: dotted;
+	border-color: #cacfa5;
+}
+.inp_set5 {
+	font-size: 10pt;
+	color: #999900;
+	background-color: #FFFFFF;
+	border-style: dotted;
+	border-color: #cacfa5;
+}
+
+A:link {
+	text-decoration: none;
+	font-weight: medium;
+	color: #999900;
+}
+
+A:visited {
+	text-decoration: none;
+	font-weight: medium;
+	color: #999900;
+}
+
+A:active {
+	text-decoration: none;
+	font-weight: medium;
+	color: #999900;
+}
+
+A:hover {
+	border-bottom-style: dotted;
+	border-bottom-color: #858d56;
+	border-bottom-width: 2px;
+}
+
+A {
+	text-decoration: none;
+}

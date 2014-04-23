@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui" xml:lang="en" lang="en">
+	<h:head>
+		<title>NoWord</title>
+		<meta http-equiv="keywords" content="enter,your,keywords,here" />
+		<meta http-equiv="description" content="A short description of this page." />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>  
+		<!--<link rel="stylesheet" type="text/css" href="styles.css">-->
+		<link rel="stylesheet" type="text/css" href="pages/styles.css" />
+			<script type="text/javascript" src="pages/bouncebox-plugin/jquery.easing.1.3.js"></script>
+			<script type="text/javascript" src="pages/bouncebox-plugin/jquery.bouncebox.1.0.js"></script>
+			<script type="text/javascript" src="pages/script.js"></script>
+			<script type="text/javascript" src="pages/images/window.js"></script>
+	</h:head>
+	<h:body>           
+			<div class="mainContainer" id="mainContainer">
+				<div class="containerShadow">
+   					<div class="head">
+    				</div>
+				    	<div class="menu">
+     			  		<div class ="login">
+      						登陆
+      					</div>
+						<div class="register">
+							<a href="regist.xhtml" style="text-decoration:none;color:#FFFFFF;">注册</a>	
+						</div>
+      					<div class="item1">
+     						<a href="myspace.xhtml?username=#{userBean.username}" style="text-decoration:none;color:#FFFFFF;">我的空间</a>
+    		  			</div>
+      					<div class="item2" style="display:none">
+     					 	为什么可以帮助你
+      					</div>
+      					<div class="item3" style="display:none">
+      						词串
+      					</div>
+      					<div class="item4" style="display:none">
+     		 				关于我们
+      					</div>
+    				</div>
+    				<div class="chartContainer" >
+    					<div class="chartShadow">
+			       		 		<div class = "galleriaclass">
+									<p:galleria value="#{userBean.images}"  
+					            	var="image" effect="slide" effectSpeed="10"  
+					            	panelWidth="670" panelHeight="350" frameWidth="160" frameHeight="70"  
+					            	filmstripPosition="bottom" showCaptions="true" showOverlays="true">  
+					    			<p:graphicImage value="pages/images/galleria/#{image}" title=""/>    
+					   			 		<p:galleriaOverlay title="">  
+					    				</p:galleriaOverlay>
+									</p:galleria> 	
+								</div>
+							<div class="commandShadow" style="top:460px;left:auto">
+								<div style="float:left;width:120px;height:150px">							
+									<img style="float:left;height:100px;width:100px;padding:10px" src = "pages/images/avatar_example1.jpg"/>
+									<div style="float:left;width:120px;text-align:center;font-size:10px">单词控</div>		
+								</div>
+								<div class="command">NoWord网站真是太神奇，原先我一直在我记不住单词而苦恼，但自从用了NoWord，熟练的记住单词便不是问题了！</div>
+								<div class ="more">
+								<p:commandLink value="more" action="#{toComment.comment}"/>
+								</div>
+							</div>
+							<div class="commandShadow" style="top:235px;left:350px">
+								<div style="float:left;width:120px;height:150px">
+									<img style="float:left;height:100px;width:100px;padding:10px" src = "pages/images/avatar_example2.jpg"/>
+									<div style="float:left;width:120px;text-align:center;font-size:10px">NoWord狂热者</div>		
+								</div>
+								<div class="command">天哪！真是难以置信，我居然可以在一个月的时间的背完2000个单词，这真是一个奇迹！NoWord是创造奇迹的地方！</div>
+								<div class ="more">
+								<p:commandLink value="more"  action="#{toComment.comment}"/>
+								</div>
+							</div>
+							<div class="commandShadow" style="top:235px;left:auto">
+								<div style="float:left;width:120px;height:150px">
+									<img style="float:left;height:100px;width:100px;padding:10px" src = "pages/images/avatar_example3.jpg"/>
+									<div style="float:left;width:120px;text-align:center;font-size:10px">国际教科文组织</div>		
+								</div>
+								<div class="command">NoWord研究了人类记忆曲线，创造出一种符合生理规则的记忆方法，他的成功来自于对客观规律的把握，更来源于团队坚持不懈的努力。NoWord是英语词汇学习史上的里程碑！</div>
+								<div class ="more">
+								<p:commandLink value="more"  action="#{toComment.comment}"/>
+								</div>
+							</div>
+							<div class="commandShadow" style="top:10px;left:350px">
+								<div style="float:left;width:120px;height:150px">
+									<img style="float:left;height:100px;width:100px;padding:10px" src = "pages/images/avatar_example4.jpg"/>
+									<div style="float:left;width:120px;text-align:center;font-size:10px">苍老师</div>			
+								</div>
+								<div class="command">NoWord网站对我的英语教学提供了巨大的帮助，现在我的学生们都在使用它。是你的NoWord，不，是大家的NoWord。</div>
+								<div class ="more">
+								<p:commandLink value="more" action="#{toComment.comment}"/>
+								</div>
+							</div>
+    					</div>
+					
+    				</div>
+		
+    				<h:form> 
+    					<div class="loginbox" id="loginbox" style="font-family:'SimHei'">
+    						<p:panel header="登陆">  	  
+    									<h:panelGrid columns="4">
+  	                     					<p:outputLabel for="username" value="Username:" />  
+             								<p:inputText id="username" value="#{userBean.username}" required="true" label="Username">          
+             								</p:inputText>
+             								<p:watermark for="username" value="请输入用户名"/>  
+            								<h:message for="username" />
+            								<p:outputLabel for="password" value="Password:"/>
+            								<p:password id="password" value="#{userBean.password}" required="true">
+            								</p:password>
+            								<p:watermark for="password" value="请输入密码"/> 
+            								<h:message for="password"/>
+            								<p:commandButton value="提交" action="#{userBean.checkUser}" update="msg"/><h:messages id="msg"/>                   			
+  	                     				</h:panelGrid>
+     						</p:panel>
+						</div>
+  					</h:form>
+  				</div>
+  				
+  				<div class ="window" id = "right">
+		    		<div class = "title">
+		    			<img alt ="关闭" src = "pages/images/delete.png"/>
+		    			我是小广告，我想吃肉
+		    			
+		    		</div>
+		    		<div class = "content" id = "rightcontent">
+		    			我是小广告内容，不要理我，我15秒后自然消失
+		    			<div>
+		    				PS 欢迎和我们交换友情链接
+		    				<img alt ="" src="pages/images/NOWORD_LOGO.jpg"/>
+		    			</div>
+		    		</div>
+		    	</div>
+  				
+  				<div class="footer"><p align="center" style="font-family:'SimHei'">Copyright by Noword.com</p>
+  				</div>
+			</div>
+			
+	</h:body>
+</html>

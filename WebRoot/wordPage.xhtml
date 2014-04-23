@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui" xml:lang="en" lang="en">
+
+  <h:head>
+  	<meta http-equiv="keywords" content="enter,your,keywords,here" />
+	<meta http-equiv="description" content="A short description of this page." />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" rev="stylesheet" href="pages/window.css" type="text/css" media="all" />
+	<h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/> 
+	<script>
+	    //测试浏览器版本
+	    var Sys = {};
+	    var ua = navigator.userAgent.toLowerCase();
+	    var s;
+	    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+	    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+	    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+	    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+	    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+	</script>
+	<script>
+            if (Sys.ie == 6.0) window.location.href="/bye_ie6.jsp?ver=6";
+            if (Sys.ie == 7.0) window.location.href="/bye_ie6.jsp?ver=7";
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+    	var cTime=10;
+    	var timer;
+    	function disCenter(){
+    		var center = document.getElementById("center");
+    		center.style.display="none";
+    	} 
+    	function showCenter(){
+    		var answer = document.getElementById("answerDiv");
+			var contentpart = document.getElementById("centercontent");
+			var questionpart = document.getElementById("questionDiv");
+    		var center = document.getElementById("center");
+    		center.style.display="block";
+    		questionpart.style.visibility="hidden";
+			answer.style.visibility="hidden";
+			contentpart.style.visibility="visible";
+    		
+    	}
+    	function showWords(){
+    		var answer = document.getElementById("answerDiv");
+			var contentpart = document.getElementById("centercontent");
+			var questionpart = document.getElementById("questionDiv");
+			questionpart.style.visibility="visible";
+			answer.style.visibility="hidden";
+			contentpart.style.visibility="hidden";
+    	}
+    	function showAnswer(){
+    		var answer = document.getElementById("answerDiv");
+			var contentpart = document.getElementById("centercontent");
+			var questionpart = document.getElementById("questionDiv");
+			answer.style.visibility="visible";
+			contentpart.style.visibility="hidden";
+			questionpart.style.visibility="visible";
+    	}  
+    	function disQues(){
+    		var questionpart = document.getElementById("questionDiv");
+    		questionpart.style.visibility="hidden";
+    	}
+    	function showQues(){
+    		var questionpart = document.getElementById("questionDiv");
+    		questionpart.style.visibility="visible";
+    	}
+    	function disAns(){
+    		var answer = document.getElementById("answerDiv");
+    		answer.style.visibility="hidden";
+    	}
+    	function showAns(){
+    		var answer = document.getElementById("answerDiv");
+    		answer.style.visibility="visible";
+    	}
+    	function initTime(){
+    		var s = document.getElementById("clock");
+    		clearInterval(timer);
+    		s.innerHTML = 10;
+    		timer = window.setInterval("run();", 1000);
+	
+    	}
+    	function run(){
+    		var d = document.getElementById("getAnswer");
+			var s = document.getElementById("clock");
+			if(s.innerHTML <= 1){
+				alert("忘记了么？快看下意思吧...");
+				clearInterval(timer);
+			}
+			s.innerHTML = s.innerHTML * 1 - 1;
+		}
+		function beginTime(){
+			timer = window.setInterval("run();", 1000);
+		}
+		function desTime(){
+			clearInterval(timer);
+		}
+		function addition(){
+			var d = document.getElementById("getAnswer");
+			d.style.zIndex=3;
+		}
+		function additionBack(){
+			var d = document.getElementById("getAnswer");
+			d.style.zIndex=1;
+		}
+    	//]]>  
+    </script>
+
+  </h:head>
+ 
+  <h:body onload="disCenter()">
+	<h:form>
+  		<div class="mainContainer" id="mainContainer">
+  			<div class="containerShadow">
+	    		<div class="head">
+    			</div>
+    			<strong>
+	    			<div class ="fadebutton" id = "mynote" style="display:none">
+	      			我的笔记 
+	      			</div>
+			
+	      			<div class="fadebutton" id = "recite" onclick="showCenter()">
+	    	 		 开始背单词
+	     			</div>
+	     			
+	     		</strong>
+	     		<div style="position: absolute;top:200px;right:180px">
+					<p:commandButton value="回到首页" style="font-family:'微软雅黑'" action="#{userBean.toHomePage}"/>
+	     			<p:commandButton value="我的空间" style="font-family:'微软雅黑'" action="#{userBean.toPerson}"/>
+	     			<p:commandButton value="设置" style="font-family:'微软雅黑'" action="#{userBean.toMySpace}"/>
+	     			<p:commandButton value="登出" style="font-family:'微软雅黑'" action="#{userBean.loginOut}"/>
+	     		</div>
+	     		<div style="font-family:'SimHei'" >
+		    	<div class ="window" id = "center">
+		    		<div class = "title">
+		    			<img alt ="关闭" src = "pages/images/delete.png" onclick="desTime();disCenter()"/>
+		    			哟，混蛋，其实我一点都不欢迎你来背单词！
+		    		</div>
+		    		<div class = "content" id = "centercontent">
+		    			<p>
+			    			亲爱的#{userBean.username}，
+			    			你正在学<span style="font-weight: bold">#{userBean.tablename}</span>
+		    			</p>
+		    			<p>
+			    			你约定<input type="text" id="planDate_real" 
+			    			style="cursor:pointer;width:105px;border:0px;color:#FFB90F;
+			    			font-size:14px" readonly="readonly" 
+			    			value="2012年06月30日" class="hasDatepicker"></input>
+						 完成。
+						</p>
+			    			<div>
+		                        <h:commandLink value="背" onmouseup="showWords()" onmousedown="beginTime()">
+		                        	<f:ajax render="mean"/>
+		                        </h:commandLink>
+		                    </div>
+	                    <br/>
+	                    <br/>
+	                    <br/>
+	                    <table style="width: 550px;">
+					        <tbody>
+					        <tr>
+					            <td><img src="pages/images/zombie.png" alt ="" style = "width:20px;height:20px;"/>
+					            <span style="font-weight: bold;color:#FFB90F">----------------------</span></td>
+					            <td><img src="pages/images/zombie.png" alt ="" style = "width:20px;height:20px;"/>--------------</td>
+					            <td><img src="pages/images/zombie.png" alt ="" style = "width:20px;height:20px;"/>--------------</td>
+					            <td><img src="pages/images/Pumpkin.png" alt ="" style = "width:20px;height:20px;"/></td>
+					        </tr>
+					        <tr>
+					            <td><span style="font-weight: bold">学习/复习</span></td>
+					            <td>冲刺</td>
+					            <td>总复习</td>
+					            <td>学完</td>
+					        </tr>
+					    	</tbody>
+	    				</table>
+	    				<br/>
+	    				<p style="height:15px;float: left"><span style="font-weight: bold">学习</span>：熟词自动过滤（也可手工pass），生词自动安排循环学习，直到掌握</p>
+	    				<p style="height:15px;float: left"><span style="font-weight: bold">复习</span>：已掌握生词，自动安排复习，进一步巩固，与学习水乳交融，相得益彰</p>
+	    				<p style="height:15px;float: left"><span style="font-weight: bold">冲刺</span>：新词都学过后，将开始冲刺，允许继续巩固未掌握单词，迅速全部掌握</p>
+	    				<p style="height:15px;float: left"><span style="font-weight: bold">总复习</span>：答对的自动剔除，答错的还会出现，一轮总复习完成后，可手工重启</p>
+		    		</div>
+		    		
+		    		<div id="questionDiv">
+			                <div id="correctMessage"><div id="messageC"></div><div id="messageState"></div></div>
+			                <div id="updateMessage"></div>
+			                
+			                <br/>
+		                
+			                <div id="question">
+			                    <div id="questionBody">
+			                    	<span class="skillName">
+			                    		(<span id="clock">
+			                    			10
+			                    		</span>)
+			                    	</span>
+			                    	<span title="看释义，选单词">
+			                    		<h:outputText id ="mean" value="#{wordBean.mean}"/>
+			                    	</span>
+			                    </div>
+			                    <br/>
+			                    <h:panelGroup id="progressBar" layout="block">
+			                    	<a target="_blank" href="/assistant/stateInfo.jsp">学习，程度：<img id="degree" src="#{wordBean.degreeUrl}" width="228" height="10"/></a>
+			                    </h:panelGroup>
+			                    <br/>
+			                    <div id="options">
+
+			                    	<div class="noword_tab">
+			                    		<h:commandLink  id="getAnswer" style="float:left; width:297px" value="我不会/记不清（空格键）" onmousedown="showAns()" onmouseup="desTime();disQues();">
+			                    			<f:ajax render="answerWord QuesMean QuesEn QuesCh small"/>
+			                    		</h:commandLink>
+			                    		<h:commandLink  style="float:right;width:297px" value="太简单直接PASS（G/H键）" action="#{wordBean.getNextWord}"  onmouseup="initTime();">
+			                    			<f:ajax render="mean hx1 hx2 hx3 hx4 progressBar"/>
+			                    		</h:commandLink>
+			                    	</div>
+				                    <div class="noword_tab">
+				                    	<h:commandLink id="options_0" onmousedown="showAns()" onmouseup="desTime();disQues();" action="#{wordBean.checkHx1}">
+				                    		<f:ajax render="answerWord QuesMean QuesEn QuesCh small"/>
+				                    		A
+				                    		<span style="padding-right:15px;">:</span>
+				                    		<h:outputText id="hx1" value="#{wordBean.hx1}"/>
+				                    	</h:commandLink>
+				                    </div>
+				                    
+				                    <div class="noword_tab">
+				                    	<h:commandLink id="options_1" onmousedown="showAns()" onmouseup="desTime();disQues();" action="#{wordBean.checkHx2}">
+				                    		<f:ajax render="answerWord QuesMean QuesEn QuesCh small"/>
+				                    		B
+				                    		<span style="padding-right:15px;">:</span>
+				                    		<h:outputText id="hx2" value="#{wordBean.hx2}"/>
+				                    	</h:commandLink>
+				                    </div>
+				                    <div class="noword_tab">
+				                    	<h:commandLink id="options_2" onmousedown="showAns()" onmouseup="desTime();disQues();" action="#{wordBean.checkHx3}">
+				                    		<f:ajax render="answerWord QuesMean QuesEn QuesCh small"/>
+				                    		C
+				                    		<span style="padding-right:15px;">:</span>
+				                    		<h:outputText id="hx3" value="#{wordBean.hx3}"/>
+				                    	</h:commandLink>
+				                    </div>
+				                    <div class="noword_tab">
+				                    	<h:commandLink id="options_3" onmousedown="showAns()" onmouseup="desTime();disQues();" action="#{wordBean.checkHx4}">
+				                    		<f:ajax render="answerWord QuesMean QuesEn QuesCh small"/>
+				                    		D
+				                    		<span style="padding-right:15px;">:</span>
+				                    		<h:outputText id="hx4" value="#{wordBean.hx4}"/>
+				                    	</h:commandLink>
+				                    </div>
+				                    <div style="float:right">
+				                    	<br/>
+				                    	<br/>
+			                    		<br/>
+				                    	<a onclick="" href="http://wpa.qq.com/msgrd?v=3&amp;uin=82341303&amp;site=qq&amp;menu=yes" target="_blank">词条报错</a>
+				                    </div>
+			                    </div>
+			                </div>
+		            	</div>
+		            	
+		            	<div id="answerDiv">
+			                <div id="wrongMessage">
+				                <br/>
+				                <img src="http://116.213.69.56/commons/css/images/icons/clock_32.png"/>走神了吧？想要NOWORD就得专注。
+			                </div>
+			                <div id="wordInfo">
+				                <br/>
+				                <div class="great">
+				                	<h:outputText id ="answerWord" value="#{wordBean.word}"/>
+				                </div>
+				                <br/>
+				                <h:panelGroup id="small" layout="block">
+				                	<span id="speakerDiv1">
+				                		<embed  id ="embed1" title="v键重读" src="http://116.213.69.56/commons/sounds/speaker.swf" 
+				                				wmode="transparent" 
+				                				flashvars="#{wordBean.flashvars2}" 
+				                				menu="false" quality="high" width="35" height="35" 
+				                				allowscriptaccess="sameDomain" type="application/x-shockwave-flash" 
+				                				pluginspage="http://www.macromedia.com/go/getflashplayer"/>
+				                	</span>
+				                	<span style="padding-left: 25px;"></span>
+				                	<span id="">
+					                	<embed  id ="embed2" src="http://116.213.69.56/commons/sounds/speaker.swf" 
+					                			wmode="transparent" 
+					                			flashvars="#{wordBean.flashvars1}" 
+					                			menu="false" quality="high" width="35" height="35" 
+					                			allowscriptaccess="sameDomain" type="application/x-shockwave-flash" 
+					                			pluginspage="http://www.macromedia.com/go/getflashplayer"/>
+				                	</span>
+				                </h:panelGroup>
+				                <div class="normal">
+					                <br/>
+					                <h:outputText id ="QuesMean" value="#{wordBean.mean}"/>
+				                </div>
+				                <br/>
+				                <div class="small2">
+				                	<h:outputText id ="QuesEn" value="#{wordBean.en_sentence}"/>
+				                </div>
+				                <div class="small2">
+				                	<h:outputText id ="QuesCh" value="#{wordBean.ch_sentence}"/>
+				                </div>
+				                <br/>
+				                <br/>
+				                <div class="noword_tab" id="goOnDiv">
+				                	<h:commandLink value="继续（空格键）" id="continueButton" actionListener="#{wordBean.getNextWord}" onmousedown="addition();showQues();" onmouseup="initTime();additionBack();disAns();">
+				      
+				                	</h:commandLink>
+				                </div>
+				                <div class="noword_tab" id="regratButtonDiv">
+				                	<a id="regratButton" onclick="initTime();showWords()">撤销（R/U键）
+				                	</a>
+				                </div>
+				                <div style="float:right">
+				                	<br/>
+				                	<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2636186257&amp;site=qq&amp;menu=yes" target="_blank">词条报错</a>
+				                </div>
+			                </div>
+			            </div>
+		    	</div>
+		    	
+	     	</div>
+	  	 </div>
+	  </div>
+	</h:form>
+  </h:body>
+</html>

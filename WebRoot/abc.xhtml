@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>abc.xhtml</title>
+		<meta http-equiv="keywords" content="enter,your,keywords,here" />
+		<meta http-equiv="description" content="A short description of this page." />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		
+		<!--<link rel="stylesheet" type="text/css" href="styles.css">-->
+	</head>
+	<body onload="countTime()">
+	请等待<span id="dd">10</span>秒
+	<div onclick="a()">aaa</div>
+<script type="text/javascript">
+function run(){
+	var s = document.getElementById("dd");
+	if(s.innerHTML == 0){
+		window.location.href='regform.shtml';
+		return false;
+	}
+	s.innerHTML = s.innerHTML * 1 - 1;
+}
+function a(){
+	window.setInterval("run();", 1000);
+}
+</script>
+</body>
+</html>

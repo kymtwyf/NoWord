@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui" xml:lang="en" lang="en">
+
+	<h:head>
+	    <title>注册</title>
+		<meta http-equiv="keywords" content="enter,your,keywords,here" />
+		<meta http-equiv="description" content="A short description of this page." />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		
+		<!--<link rel="stylesheet" type="text/css" href="styles.css">-->
+		 		<link rel="stylesheet" type="text/css" href="pages/styles.css" />
+		 		<script type="text/javascript" src="pages/regist.js"></script>
+	</h:head>
+	<body>
+		<div class="mainContainer" id="mainContainer">
+			<div class="containerShadow" style="height: 650px">
+				<div class="head">
+					<div align="center" style="position: absolute;height:20;top: 205px;left: 320px;width:620px;">
+						<p:panel header="注册">  
+							<h:form  prependId="false" id="test">
+								 <h:panelGrid columns="3" style="height:260px">
+								 	<h:outputText value="用户名:" style="position: absolute; top:65px; left:42px;" /> 
+								 	<p:inputText value="#{registrationBean.userName}"
+                 						required="true"
+                 						id="userNameField"
+                 						onfocus="userNameTip()"
+                 						onblur="checkUserName()"
+                 						style="position: absolute; top:60px; left:107px;"
+                 					>                          
+    								</p:inputText>
+    								<h:inputText value="#{registrationBean.check_username}" 
+    		 							id = "checkUserNameField" 
+    		 							readonly="true"
+   										style="border-style:none;color:red;width:300px;background-color:transparent;left:300px;position: absolute;top:65px;">
+    								</h:inputText>
+     								<h:outputText value="登陆密码:"  style="position: absolute; top:110px; left:23px;" /> 						
+   									<p:password value="#{registrationBean.code}"
+   										feedback="true"
+    			 						required="true"
+                 						id="codeField"
+                 						onfocus="codeTip()"
+               							onblur="codeBlurTip()"
+               							style="position: absolute; top:105px; left:107px;">
+      								</p:password> 
+      								<h:inputText value="" 
+    			   						id = "checkCodeField" 
+    			  						readonly="true"
+       									style="border-style:none;color:red;width:300px;background-color:transparent;top:110px;left:470px;position: absolute;">
+      								</h:inputText>
+									<h:outputText value="确认密码:" style="position: absolute; top:155px; left:23px;"/> 						
+   									<p:password value="#{registrationBean.reCode}"
+    			 						required="true"
+                	 					id="reCodeField" 
+                 						onblur="checkCode()"
+                 						style="position: absolute; top:150px; left:107px;">  
+      								</p:password>
+      								<h:inputText value="" 
+    			 						id = "checkReCodeField" 
+    			 						readonly="true"
+    			 						style="border-style:none;color:red;width:300px;background-color:transparent;top:155px;left:300px;position: absolute;">
+    								</h:inputText>
+    								<h:outputText value="输入邮箱:" style="position: absolute; top:200px; left:23px;"/>
+    								<p:inputText value="#{registrationBean.email}"
+                 						required="true"
+                 						requiredMessage="不能为空,方便找回密码"
+                 						validatorMessage="邮箱不合法"
+                 						id="emailField"
+                 						onfocus = "emailTip()"
+                 						onblur = "emailBlurTip()"
+                 						style="position: absolute; top:195px; left:107px;">
+    								<f:validator validatorId="emailValidate"/>
+    								</p:inputText>
+    								<h:inputText value="" 
+    			 						id ="checkEmail"
+    			 						readonly="true"
+       									style="border-style:none;color:red;width:300px;background-color:transparent;top:200px;left:300px;position: absolute;">
+     								</h:inputText>   								
+     								<h:message for="emailField" id="emailMsg" styleClass="error"/>
+     								
+     								
+     								
+     								
+     								<h:outputText value="输入验证码:" style="left: 5px;top: 245px;  position: absolute"/>
+     								<p:inputText value="#{registrationBean.vercode}"
+                 						required="true"
+                 						id="authCode"
+                 						style="left: 107px;top: 241px;  position: absolute">                          
+    								</p:inputText>
+    								<img src="validateCode.jsp" id="getCode" style="left: 300px;top: 248px;  position: absolute"/>  
+     							    <a href="#" onclick="validateCode()" style="left: 362px;top: 250px;  position: absolute">看不清换一张</a>				
+     								<h:inputText value="#{registrationBean.auth_code}" 
+    		 							id = "authCodeTest" 
+    		 							readonly="true"
+   										style="border-style:none;color:red;width:300px;background-color:transparent;left:260px;top:285px;position: absolute;">
+    								</h:inputText>    								
+     								
+     								<p:commandButton value="完成注册" 
+     									update="registMsg"
+                       					action="#{registrationBean.doRegistration}"  
+                       					style="left: 140px;top: 276px; position: absolute"/>
+                       				<h:message for="userNameField" id="registMsg"/>
+           
+  								</h:panelGrid>
+							</h:form>
+						</p:panel>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui" xml:lang="en" lang="en">
+
+  <h:head>
+  	<meta http-equiv="keywords" content="enter,your,keywords,here" />
+	<meta http-equiv="description" content="A short description of this page." />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	
+	<link rel="stylesheet" rev="stylesheet" href="pages/config.css" type="text/css" media="all" />
+	<script type="text/javascript" src="pages/images/window.js"></script>
+	<script type="text/javascript" src="pages/images/recite.js"></script>
+	<h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/> 
+	<script>
+	    //测试浏览器版本
+	    var Sys = {};
+	    var ua = navigator.userAgent.toLowerCase();
+	    var s;
+	    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+	    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+	    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+	    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+	    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+	</script>
+	<script>
+            if (Sys.ie == 6.0) window.location.href="/bye_ie6.jsp?ver=6";
+            if (Sys.ie == 7.0) window.location.href="/bye_ie6.jsp?ver=7";
+    </script>
+
+  </h:head>
+ 
+  <h:body>
+
+  	<div class="mainContainer" id="mainContainer">
+  		<div class="containerShadow">
+	    	<div class="head">
+    		</div>
+    		<strong>
+	    	<div  id = "yourconfig">
+	      	个性化设置
+	      	</div>
+	      	<div class ="fadebutton" id = "recite">
+	      	<a href="wordPage.xhtml" target="_self" style="color:#FFFFFF">背单词</a>
+	      	</div>
+	      	<div class ="fadebutton" id = "myspace">
+	      	<a href="myspace.xhtml" target="_self" style="color:#FFFFFF">我的空间</a>
+	      	</div>
+	      	
+	      	</strong>
+
+	      	<div class="yourspace">
+    			<div class="yourspaceShadow">
+					<div id="setting-nav" class="nav-box">
+					    <h3>设置</h3>
+					    <ul>
+					        <li class="bdc"><a href="/user/setting/bdc/">背单词设置</a></li>
+					        <li class="planning"><a href="/user/setting/planning/">学习计划</a></li>
+					        <li class="info"><a href="/user/setting/info/">用户设置</a></li>
+					        <li class="avatar"><a href="/avatar/change/">更改头像</a></li>
+					        <li class="account"><a href="/user/setting/account/">账号设置</a></li>
+					
+					    </ul>
+					</div>
+				
+				</div>
+    		</div>
+	      	<div class="chartContainer" >
+    			<div class="chartShadow">
+		    		<div id="right-container">
+		                <div id="right-content">
+		                    
+							<div id="setting">
+							    
+							    <div id="setting-planning" class="setting">
+							        <h3>制定学习计划</h3>
+   
+							        <form action="/user/setting/planning/" method="post">
+							            <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="f4af69bc01c66598dbce09b5d3530e4c"/></div>
+							            <table>
+							                <tbody>
+							                <tr><th><label for="id_num_vocabulary">单词总数:</label></th><td><input type="text" name="num_vocabulary" value="9135" id="id_num_vocabulary" disabled="disabled"/>
+							        
+
+							        <br/>
+							        
+							    </td></tr>
+							
+							<tr><th><label for="id_time">每天学习量(新词+旧词):</label></th><td><select name="time" id="id_time">
+							<option value="50">50</option>
+							<option value="100">100</option>
+							<option value="200" selected="selected">200</option>
+							<option value="300">300</option>
+							<option value="400">400</option>
+							<option value="500">500</option>
+							<option value="600">600</option>
+							<option value="700">700</option>
+							</select>
+							        <div id="cost_tip" style="" class="planning-intro">
+							        <p><span class="quota emphasize">200</span> 是你当前的每天学习量</p>
+							    </div>
+							    </td></tr>
+							<tr><th><label for="id_finish_time">预估完成时间:</label></th><td><input type="text" name="finish_time" value="2013-01-04" id="id_finish_time"/>
+							       
+							        <br/>
+							        
+							        <div id="time_tip" style="" class="planning-intro">
+							            <p>您将花费大约 <span class="cost_time emphasize">2</span> 个小时来完成每天的学习</p>
+							        </div>
+							    </td></tr>
+						
+							                </tbody>
+							            </table>
+							            
+							                <button class="g-button" type="submit" id="planning-submit">确定</button>
+ 
+							        </form>
+							    </div>
+							    <div>
+							        
+							    </div>
+							   
+							    
+							
+							</div>
+		
+		                </div>
+		                <div id="bottom">
+		                    <div id="shares">
+		                        
+		                            <!-- JiaThis Button BEGIN -->
+		                            <div id="ckepop">
+		                                <a href="http://www.jiathis.com/share" class="menu jiathis jiathis_txt" target="_blank" style="font-family:'微软雅黑';font-weight: bold">分享</a>
+		                            </div>
+		                            <!-- JiaThis Button END -->
+		                        
+		                    </div>
+		                </div>
+		                <div id="footer">
+		                </div>
+		
+		                <div id="dialog">
+		                    <div class="overlay"></div>
+		                    <div class="content">
+		                        <span class="close">x</span> 
+		                        <div>some texts here</div>
+		                    </div>
+		                </div>
+		                <div id="rdialog">
+		                    <div class="content">
+		                        <span class="close">关闭</span> 
+		                        <div></div>
+		                    </div>
+		                </div>
+		                <div id="large_dialog">
+		                    <div class="overlay"></div>
+		                    <div class="content">
+		                        <span class="close">x</span> 
+		                        <div>some texts here</div>
+		                    </div>
+		                </div>
+		        </div>
+			    </div>
+			</div>
+    	</div>
+    </div> 
+ 	
+  </h:body>
+</html>

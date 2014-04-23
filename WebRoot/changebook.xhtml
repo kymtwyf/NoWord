@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui" xml:lang="en" lang="en">
+
+  <h:head>
+  	<meta http-equiv="keywords" content="enter,your,keywords,here" />
+	<meta http-equiv="description" content="A short description of this page." />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	
+	<link rel="stylesheet" rev="stylesheet" href="pages/changebook.css" type="text/css" media="all" />
+	<script type="text/javascript" src="pages/images/window.js"></script>
+	<script type="text/javascript" src="pages/images/recite.js"></script>
+	<h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/> 
+	<script>
+	    //测试浏览器版本
+	    var Sys = {};
+	    var ua = navigator.userAgent.toLowerCase();
+	    var s;
+	    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+	    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+	    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+	    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+	    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+	</script>
+	<script>
+            if (Sys.ie == 6.0) window.location.href="/bye_ie6.jsp?ver=6";
+            if (Sys.ie == 7.0) window.location.href="/bye_ie6.jsp?ver=7";
+    </script>
+     <script type="text/javascript">
+     	function alert1(){
+     		alert("您选择了六级词库，现在点击“背单词”开始你的单词之旅吧！");
+     	}
+     	function alert2(){
+     		alert("您选择了托福词库，现在点击“背单词”开始你的单词之旅吧！");
+     	}
+     	function alert3(){
+     		alert("您选择了雅思词库，现在点击“背单词”开始你的单词之旅吧！");
+     	}
+     </script>
+
+  </h:head>
+ 
+  <h:body>
+	<h:form>
+  	<div class="mainContainer" id="mainContainer">
+  		<div class="containerShadow">
+	    	<div class="head">
+    		</div>
+    		<strong>
+	    	<div  id = "yourconfig">
+	      	我的单词书
+	      	</div>
+	      	<div style="position: absolute;top:160px;left:700px">	
+    			<p:commandButton value="回到首页" style="font-family:'微软雅黑'" action="#{userBean.toHomePage}"/>
+    		</div>
+    		<div style="position: absolute;top:160px;right:160px">	
+    		
+				<p:commandButton value="我的空间" style="font-family:'微软雅黑'" action="#{userBean.toPerson}"/>
+	     		<p:commandButton value="背单词" style="font-family:'微软雅黑'" action="#{userBean.toMyWord}"/>
+	     		<p:commandButton value="登出" style="font-family:'微软雅黑'" action="#{userBean.loginOut}"/>
+	     	</div>
+	      	
+	      	</strong>
+
+	      	<div class="yourspace">
+    			<div class="yourspaceShadow">
+					<div id="left-container">
+				         <div class="nav-box">
+				            <ul>
+				                <h3>单词书分类</h3>
+				                <div class="wordbook-categories">
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b1" href="#">考研</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b2" href="#">托福</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b3" href="#">雅思</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b4" href="#">GRE</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b5" href="#">四六级</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b6" href="#">英语专业</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b7" href="#">托业</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b8" href="#">GMAT</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b9" href="#">SAT</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b10" href="#">中小学</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b11" href="#">英语辅导</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b12" href="#">公共英语</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b13" href="#">公开课</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b14" href="#">影视剧</a></li>
+				                    
+				                        <li style="padding-bottom: 15px;"><a id="b15" href="#">其他</a></li>
+				                    
+				                </div>
+				            </ul>
+				         </div>
+					 </div>
+				</div>
+    		</div>
+	      	<div class="chartContainer" >
+    			<div class="chartShadow">
+		    		<div id="right-container">
+		                <div id="right-content">
+
+							<div class="wordbook-container">
+							    <h3>常用的单词书</h3>
+							    <span class="hide" id="unsubscribe-fail-prompt">收藏单词书失败</span>
+							    <ul>
+							    
+							        <li class="user-saved-wordbook" style="border-bottom-style: dashed; border-bottom-width: 1px; border-bottom-color: rgb(204, 204, 204); ">
+							            <div class="wordbook-cover float-left">
+							                <a href="#"><img alt="" src="pages/images/wordbookcover/cet6.jpg" height="146" width="98"/></a>
+							            </div>
+							
+							            <div class="wordbook-basic-info">
+							                <div class="wordbook-title">
+							                    <h:commandLink value="大学英语六级词汇书" action="#{chooseWordBean.chooseCet6}" onmousedown="alert1();"/>
+							                </div>
+							
+							                <div class="wordbook-count">
+							                    
+							                    <span>单词数: </span>2075 <br/>
+							                    
+							                </div>
+							                <div class="wordbook-master-percent">
+							                    						                    
+							                </div>
+							                <div class="wordbook-unsubscribe">
+							                    <span class="hide">2</span>
+							                </div>
+							            </div>
+							            <div class="clear"></div>
+							            <div class="wordbook-short-description">
+							                <p>本单词书已经过滤了四级简单单词，如果四级分数不高， 建议先背四级单词， 背完之后再选本书。 本书精选2000六级词汇， ...(<a href="/wordbook/2/">更多</a>)</p>
+							            </div>
+							        </li>
+							    
+							        <li class="user-saved-wordbook" style="border-bottom-style: dashed; border-bottom-width: 1px; border-bottom-color: rgb(204, 204, 204); ">
+							            <div class="wordbook-cover float-left">
+							                <a href="#"><img alt="" src="pages/images/wordbookcover/TOEFL.jpg" height="146" width="98"/></a>
+							            </div>
+							
+							            <div class="wordbook-basic-info">
+							                <div class="wordbook-title">
+							                    <h:commandLink value="TOEFL 词汇" action="#{chooseWordBean.chooseToefl}" onmousedown="alert2();"/>
+							                </div>
+							
+							                <div class="wordbook-count">
+							                    
+							                    <span>单词数: </span>5005 <br/>
+							                    
+							                </div>
+							                <div class="wordbook-master-percent">
+							                    						                    
+							                </div>
+							                <div class="wordbook-unsubscribe">
+							                    <span class="hide">4</span>
+							                </div>
+							            </div>
+							            <div class="clear"></div>
+							            <div class="wordbook-short-description">
+							                <p>本书堪称是目前最贴近TOEFL考试、复习TOEFL词汇最有效的词汇书。它以2005年1月及之前中国考区所有TOEFL真题...(<a href="/wordbook/4/">更多</a>)</p>
+							            </div>
+							        </li>
+							    
+							        <li class="user-saved-wordbook" style="border-bottom-style: dashed; border-bottom-width: 1px; border-bottom-color: rgb(204, 204, 204); ">
+							            <div class="wordbook-cover float-left">
+							                <a href="#"><img alt="" src="pages/images/wordbookcover/IELTS.jpg" height="146" width="98"/></a>
+							            </div>
+							
+							            <div class="wordbook-basic-info">
+							                <div class="wordbook-title">
+							                     <h:commandLink value="IELTS 精选词表" action="#{chooseWordBean.chooseIelts}" onmousedown="alert3();"/>
+							                </div>
+							
+							                <div class="wordbook-count">
+							                    
+							                    <span>单词数: </span>2229 <br/>
+							                    
+							                </div>
+							                <div class="wordbook-master-percent">
+							                   							                    
+							                </div>
+							                <div class="wordbook-unsubscribe">
+							                    <span class="hide">7</span>
+							                </div>
+							            </div>
+							            <div class="clear"></div>
+							            <div class="wordbook-short-description">
+							                <p>本词表已经过滤了大部分基础词汇， 都是比较复杂的单词， 如果没有基础， 请主动先复习其他的单词， 比如托福词汇。 
+							
+							...(<a href="/wordbook/7/">更多</a>)</p>
+							            </div>
+							        </li>
+							    
+							        <li class="user-saved-wordbook" style="border-bottom-style: dashed; border-bottom-width: 1px; border-bottom-color: rgb(204, 204, 204); ">
+							            <div class="wordbook-cover float-left">
+							                <a href="#"><img alt="" src="pages/images/wordbookcover/GMAT.jpg" height="146" width="98"/></a>
+							            </div>
+							
+							            <div class="wordbook-basic-info">
+							                <div class="wordbook-title">
+							                    <a href="/wordbook/8/">GMAT词汇</a>
+							                </div>
+							
+							                <div class="wordbook-count">
+							                    
+							                    <span>单词数: </span>2362 <br/>
+							                    
+							                </div>
+							                <div class="wordbook-master-percent">
+							                    						                    
+							                </div>
+							                <div class="wordbook-unsubscribe">
+							                    <span class="hide">8</span>
+							                </div>
+							            </div>
+							            <div class="clear"></div>
+							            <div class="wordbook-short-description">
+							                <p>工商管理硕士MBA入学考试词汇， 本书单词不多， 只要坚持学习， 不足2月的时间即可搞定。 
+							
+							现在就收藏这本单词书...(<a href="#">更多</a>)</p>
+							            </div>
+							        </li>
+							    
+							        <li class="user-saved-wordbook">
+							            <div class="wordbook-cover float-left">
+							                <a href="#"><img alt="" src="pages/images/wordbookcover/SAT.jpg" height="146" width="98"/></a>
+							            </div>
+							
+							            <div class="wordbook-basic-info">
+							                <div class="wordbook-title">
+							                    <a href="#">SAT 官方指南指定词汇</a>
+							                </div>
+							
+							                <div class="wordbook-count">
+							                    							                    
+							                </div>
+							                <div class="wordbook-master-percent">
+							                    							                    
+							                </div>
+							                <div class="wordbook-unsubscribe">
+							                    <span class="hide">21</span>
+							                </div>
+							            </div>
+							            <div class="clear"></div>
+							            <div class="wordbook-short-description">
+							                <p>SAT 官方指南指定的词汇， 本书虽然只有1300词汇，但都是精选词汇。 如果词汇基础不好，建议从四六级简单单词开始背，...(<a href="/wordbook/21/">更多</a>)</p>
+							            </div>
+							        </li>
+							    
+							    </ul>
+							    <div class="clear"> </div>
+							</div>
+               			</div>
+		                <div id="bottom">
+		                    <div id="shares">
+		                        
+		                            <!-- JiaThis Button BEGIN -->
+		                            <div id="ckepop">
+		                                <a href="http://www.jiathis.com/share" class="menu jiathis jiathis_txt" target="_blank" style="font-family:'微软雅黑';font-weight: bold">分享</a>
+		                            </div>
+		                            <!-- JiaThis Button END -->
+		                        
+		                    </div>
+		                </div>
+ 
+		        </div>
+			    </div>
+			</div>
+    	</div>
+    </div> 
+ 	</h:form>
+  </h:body>
+</html>

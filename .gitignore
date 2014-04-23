@@ -1,0 +1,5 @@
+.settings/*
+.classpath
+.myeclipse/profiler/NoWordProject on MyEclipse Tomcat.xml
+.mymetadata
+WebRoot/WEB-INF/classes/*
